@@ -7,20 +7,26 @@ public class Main {
 
     public static void wordFilter(String taco) {
         String[] words = taco.split(" ");
-
-        ArrayList<String> wordsArrayList = new ArrayList<String>();
-        wordsArrayList.addAll(Arrays.asList(words));
         
         HashMap<String, Integer> wordsHashMap = new HashMap<String, Integer>();
 
-        for (String s : wordsArrayList)
+        for (String s : words)
         {
             int value = 1;
             String key = s.replaceAll("[^a-zA-Z0-9]+","");
-            wordsHashMap.put(key, value);
+
+            if (wordsHashMap.containsKey(key)) 
+            {
+                int previousValue = wordsHashMap.get(key);
+                int nextValue = previousValue + 1;
+                wordsHashMap.replace(key, previousValue, nextValue);
+            }
+            else 
+            {
+                wordsHashMap.put(key, value);
+            }
         }
 
-        // System.out.println(wordsArrayList);
         System.out.println(wordsHashMap.toString());
     }
 
