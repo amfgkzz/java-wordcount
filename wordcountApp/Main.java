@@ -8,7 +8,7 @@ public class Main {
     public static void wordFilter(String taco) {
         taco.replaceAll("[[\\.\\?\\!\\,\\;\\:\\{\\}\\(\\)\\']]", "");
         String[] words = taco.split(" +");
-        System.out.println(words);
+        
     }
 
     public static void main(String[] args) {
