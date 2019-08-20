@@ -27,7 +27,19 @@ public class Main {
             }
         }
 
-        System.out.println(wordsHashMap.toString());
+        ArrayList<HashMap.Entry<String, Integer>> sortedMap = new ArrayList<HashMap.Entry<String,Integer>>();
+        sortedMap.addAll(wordsHashMap.entrySet());
+
+        Collections.sort(sortedMap, new Comparator<HashMap.Entry<String, Integer>>()
+         {
+             public int compare (HashMap.Entry<String, Integer> o1, HashMap.Entry<String, Integer> o2)
+             {
+                 return o1.getValue() - o2.getValue();
+             }
+        });
+
+        System.out.println(sortedMap.toString());
+
     }
 
     public static void main(String[] args) {
